@@ -22,8 +22,8 @@ uint32_t u32_gs_tmr0nuofovs = 0 ;   /** VARIABLE TO HOLD THE NUMBER OF OVER FLOW
 
 /****************************************************************/
 /** FUNCTION TO INITIALIZE TMR0 WITH SOME CONFIGURATIONS        */
-/** ARGUMENTS  : VOID                                           */
-/** RETURNS    : TMR0_init                                      */
+/** @param      VOID                                            */
+/** @return     TMR0_init status                                */
 /****************************************************************/
 TMR0_init_error TMR0_init(void)
 {
@@ -147,11 +147,11 @@ TMR0_init_error TMR0_init(void)
 }
 
 
-/*********************************************************************************/
-/** FUNCTION TO LET TIMER 0 START WORK BY ASSIGNING PRESCALLER OR CLOCK SOURCE   */
-/** ARGUMENTS  : VOID                                                            */
-/** RETURNS    : TMR0_start                                                      */
-/*********************************************************************************/
+/*******************************************************************************/
+/** Description : Start Timer 0 with the assigned prescaller or clock source   */
+/** @param      VOID                                                           */
+/** @return     TMR0_start status                                              */
+/*******************************************************************************/
 TMR0_start_error TMR0_start(void)
 {
 	TMR0_start_error en_a_startstatus = VALID_START ; /** VARIABLE TO RETURN THE STATUS OF START **/
@@ -202,9 +202,9 @@ TMR0_start_error TMR0_start(void)
 }
 
 /*******************************************************************************/
-/** FUNCTION TO STOP TIMER 0                                                   */
-/** ARGUMENTS  : VOID                                                          */
-/** RETURNS    : TMR0_stop                                                     */
+/** Description : Stop Timer 0                                                 */
+/** @param      VOID                                                           */
+/** @return     TMR0_stop status                                               */
 /*******************************************************************************/
 TMR0_stop_error TMR0_stop(void)
 {
@@ -222,9 +222,9 @@ TMR0_stop_error TMR0_stop(void)
 }
 
 /*******************************************************************************/
-/** FUNCTION TO SET DELAY USING TIMER 0                                        */
-/** ARGUMENTS  : TAKES DELAY IN ms                                             */
-/** RETURNS    : TMR0_delay                                                    */
+/** Description : Sets delay in using Timer 0                                  */
+/** @param      delay_in_milliseconds                                          */
+/** @return     TMR0_delay status                                              */
 /*******************************************************************************/
 TMR0_delay_error TMR0_delayms(uint32_t u32_a_delayms)
 {
@@ -289,11 +289,11 @@ TMR0_delay_error TMR0_delayms(uint32_t u32_a_delayms)
 }
 
 /*******************************************************************************/
-/** FUNCTION TO SET DELAY USING TIMER 0                                        */
-/** ARGUMENTS  : TAKES DELAY IN ms                                             */
-/** RETURNS    : TMR0_delay                                                    */
+/** Description : Sets delay in using Timer 0                                  */
+/** @param      delay_in_microseconds                                          */
+/** @return     TMR0_delay status                                              */
 /*******************************************************************************/
-TMR0_delay_error TMR0_delaymicos(uint32_t u32_a_delaymicros)
+TMR0_delay_error TMR0_delaymicros(uint32_t u32_a_delaymicros)
 {
 	uint32_t u32_a_overflowcounter = 0 ;
 	
