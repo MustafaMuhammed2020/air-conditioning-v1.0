@@ -222,7 +222,7 @@ TMR0_stop_error TMR0_stop(void)
 }
 
 /*******************************************************************************/
-/** Description : Sets delay in using Timer 0                                  */
+/** Description : Sets delay using Timer 0                                     */
 /** @param      delay_in_milliseconds                                          */
 /** @return     TMR0_delay status                                              */
 /*******************************************************************************/
@@ -289,7 +289,7 @@ TMR0_delay_error TMR0_delayms(uint32_t u32_a_delayms)
 }
 
 /*******************************************************************************/
-/** Description : Sets delay in using Timer 0                                  */
+/** Description : Sets delay using Timer 0                                     */
 /** @param      delay_in_microseconds                                          */
 /** @return     TMR0_delay status                                              */
 /*******************************************************************************/
