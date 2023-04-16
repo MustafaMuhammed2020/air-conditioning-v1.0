@@ -21,7 +21,7 @@ uint32_t u32_gs_tmr0nuofovs = 0 ;   /** VARIABLE TO HOLD THE NUMBER OF OVER FLOW
 
 
 /****************************************************************/
-/** FUNCTION TO INITIALIZE TMR0 WITH SOME CONFIGURATIONS        */
+/** Description : Initialize Timer 0 with some configurations   */
 /** @param      VOID                                            */
 /** @return     TMR0_init status                                */
 /****************************************************************/
