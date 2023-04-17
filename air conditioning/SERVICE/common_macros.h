@@ -17,6 +17,15 @@
 /*macro to toggle a specific bit*/
 #define toggle_bit(byte,bit_num) (byte ^= (1<<bit_num))
 
+/*macro to set a mask*/
+#define Set_mask(mask,portNumber) ((portNumber) |= mask)
+
+/*macro to clear a mask*/
+#define Clear_mask(mask,portNumber) ((portNumber) &= ~(mask))
+
+/*macro to toggle a mask*/
+#define Toggle_mask(mask,portNumber) ((portNumber)^= (mask))
+
 /*macro to check if a bit is set*/
 #define bit_is_set(byte,bit_num) (byte & (1<<bit_num))
 

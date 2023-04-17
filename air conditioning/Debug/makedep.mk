@@ -6,7 +6,7 @@ APP\app.c
 
 HAL\keypad\KEYPAD_program.c
 
-HAL\lcd\LCD_program.c
+HAL\lcd\lcd.c
 
 HAL\lm35\LM35_program.c
 

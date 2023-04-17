@@ -35,6 +35,9 @@ LINKER_SCRIPT_DEP:=
 SUBDIRS :=  \
 ../Debug/ \
 ../Debug/APP/ \
+../Debug/Debug/ \
+../Debug/Debug/HAL/ \
+../Debug/Debug/HAL/lcd/ \
 ../Debug/HAL/ \
 ../Debug/HAL/keypad/ \
 ../Debug/HAL/lcd/ \
@@ -44,8 +47,8 @@ SUBDIRS :=  \
 ../Debug/MCAL/dio/ \
 ../Debug/MCAL/timer0/ \
 ../Debug/SERVICE/ \
+../HAL/lcd/ \
 ../HAL/lm35 \
-../HAL/lcd \
 ../HAL/keypad \
 ../MCAL \
 ../HAL \
@@ -60,7 +63,7 @@ SUBDIRS :=  \
 C_SRCS +=  \
 ../APP/app.c \
 ../HAL/keypad/KEYPAD_program.c \
-../HAL/lcd/LCD_program.c \
+../HAL/lcd/lcd.c \
 ../HAL/lm35/LM35_program.c \
 ../main.c \
 ../MCAL/adc/ADC_program.c \
@@ -77,7 +80,7 @@ ASM_SRCS +=
 OBJS +=  \
 APP/app.o \
 HAL/keypad/KEYPAD_program.o \
-HAL/lcd/LCD_program.o \
+HAL/lcd/lcd.o \
 HAL/lm35/LM35_program.o \
 main.o \
 MCAL/adc/ADC_program.o \
@@ -87,7 +90,7 @@ MCAL/timer0/TMR0_program.o
 OBJS_AS_ARGS +=  \
 APP/app.o \
 HAL/keypad/KEYPAD_program.o \
-HAL/lcd/LCD_program.o \
+HAL/lcd/lcd.o \
 HAL/lm35/LM35_program.o \
 main.o \
 MCAL/adc/ADC_program.o \
@@ -97,7 +100,7 @@ MCAL/timer0/TMR0_program.o
 C_DEPS +=  \
 APP/app.d \
 HAL/keypad/KEYPAD_program.d \
-HAL/lcd/LCD_program.d \
+HAL/lcd/lcd.d \
 HAL/lm35/LM35_program.d \
 main.d \
 MCAL/adc/ADC_program.d \
@@ -107,7 +110,7 @@ MCAL/timer0/TMR0_program.d
 C_DEPS_AS_ARGS +=  \
 APP/app.d \
 HAL/keypad/KEYPAD_program.d \
-HAL/lcd/LCD_program.d \
+HAL/lcd/lcd.d \
 HAL/lm35/LM35_program.d \
 main.d \
 MCAL/adc/ADC_program.d \
@@ -142,7 +145,7 @@ HAL/keypad/KEYPAD_program.o: ../HAL/keypad/KEYPAD_program.c
 	@echo Finished building: $<
 	
 
-HAL/lcd/LCD_program.o: ../HAL/lcd/LCD_program.c
+HAL/lcd/lcd.o: ../HAL/lcd/lcd.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
