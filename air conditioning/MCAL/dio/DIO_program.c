@@ -231,3 +231,74 @@ PinRead_t DIO_togglepin(uint8_t u8_a_portid , uint8_t u8_a_pinid )
 	
 	return en_a_Pinreadstate ; /** RETURN THE FINAL STATE OF THE FUNCTION **/
 }
+
+
+/*******************************************************************/
+/* DESCRIBTION  : FUNCTION TO SET THE DIRECTION OF SPECIFIC PORT   */
+/* INPUT   : PORT , DIRECTION                                      */
+/* RETURNS : PinDirection_t                                        */
+/*******************************************************************/
+PinDirection_t DIO_setportdir(uint8_t u8_a_portid , uint8_t u8_a_portdir)
+{
+	PinDirection_t en_a_portstatus = VALID_DIRECTION ; /** VARIABLE TO HOLD THE RETUN STATUS **/
+	
+	switch(u8_a_portid)
+	{
+		case DIO_PORTA:
+		DDRA = u8_a_portdir;
+		break;
+		
+		case DIO_PORTB:
+		DDRB = u8_a_portdir;
+		break;
+		
+		case DIO_PORTC:
+		DDRC = u8_a_portdir;
+		break;
+		
+		case DIO_PORTD:
+		DDRD = u8_a_portdir;
+		break;
+		
+		default:
+		en_a_portstatus = NOT_VALID_DIRECTION ;
+		break;
+	} 
+	
+	return en_a_portstatus ;  /** RETURN THE FINAL STATUS **/
+}
+
+/*******************************************************************/
+/* DESCRIBTION  : FUNCTION TO SET THE VALUE OF SPECIFIC PORT       */
+/* INPUT   : PORT , PINID , DIRECTION                              */
+/* RETURNS : PinValue_t                                            */
+/*******************************************************************/
+PinValue_t DIO_setportvalue(uint8_t u8_a_portid , uint8_t u8_a_portval)
+{
+	PinValue_t en_a_portvaluestatus = VALID_VALUE ; /** VARIABLE TO HOLD THE STATUS OF THE FUNCTION **/
+	
+	switch(u8_a_portid)
+	{
+		case DIO_PORTA:
+		PORTA = u8_a_portval;
+		break;
+		
+		case DIO_PORTB:
+		PORTB = u8_a_portval;
+		break;
+		
+		case DIO_PORTC:
+		PORTC = u8_a_portval;
+		break;
+		
+		case DIO_PORTD:
+		PORTD = u8_a_portval;
+		break;
+		
+		default:
+		en_a_portvaluestatus = NOT_VALID_VALUE ;
+		break;
+	}
+	
+	return en_a_portvaluestatus ; /** RETURN THE FINAL STATUS **/ 
+}

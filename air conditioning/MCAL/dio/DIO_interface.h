@@ -1,7 +1,7 @@
 /**************************************************/
 /* Author  : Mustafa Mohammed Abdou               */
 /* Date    : 16 April , 2023                      */
-/* Version : V01                                  */
+/* Version : V02                                  */
 /* Hint    : Interface file of DIO                */
 /**************************************************/
 
@@ -65,6 +65,13 @@ typedef enum { VALID_READ , NOT_VALID_READ } PinRead_t ;
 /******************************************************************/
 PinDirection_t DIO_setpindir(uint8_t u8_a_portid , uint8_t u8_a_pinid , uint8_t u8_a_pindir);
 
+/*******************************************************************/
+/* DESCRIBTION  : FUNCTION TO SET THE DIRECTION OF SPECIFIC PORT   */
+/* INPUT   : PORT , DIRECTION                                      */
+/* RETURNS : PinDirection_t                                        */
+/*******************************************************************/
+PinDirection_t DIO_setportdir(uint8_t u8_a_portid , uint8_t u8_a_portdir);
+
 
 /******************************************************************/
 /* DESCRIBTION  : FUNCTION TO SET THE VALUE OF SPECIFIC PIN       */
@@ -72,6 +79,13 @@ PinDirection_t DIO_setpindir(uint8_t u8_a_portid , uint8_t u8_a_pinid , uint8_t 
 /* RETURNS : PinValue_t                                           */
 /******************************************************************/
 PinValue_t DIO_setpinvalue(uint8_t u8_a_portid , uint8_t u8_a_pinid , uint8_t u8_a_pinval);
+
+/*******************************************************************/
+/* DESCRIBTION  : FUNCTION TO SET THE VALUE OF SPECIFIC PORT       */
+/* INPUT   : PORT , PINID , DIRECTION                              */
+/* RETURNS : PinValue_t                                            */
+/*******************************************************************/
+PinValue_t DIO_setportvalue(uint8_t u8_a_portid , uint8_t u8_a_portval);
 
 
 /******************************************************************/
