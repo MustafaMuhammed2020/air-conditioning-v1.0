@@ -39,27 +39,27 @@
 /************************************************************************/
 /* External Interrupts Registers                                        */
 /************************************************************************/
-#define SREG  *((volatile uint8_t*)0x5F)
-#define GICR  *((volatile uint8_t*)0x5B)
-#define GIFR  *((volatile uint8_t*)0x5A)
-#define MCUCR *((volatile uint8_t*)0x55)
+/*#define SREG  *((volatile uint8_t*)0x5F)*/
+// #define GICR  *((volatile uint8_t*)0x5B)
+// #define GIFR  *((volatile uint8_t*)0x5A)
+// #define MCUCR *((volatile uint8_t*)0x55)
 
 /************************************************************************/
 /* Timers Registers                                                     */
 /************************************************************************/
 //Timer 0 registers (8-bit register)
-#define TCCR0 *((volatile uint8_t*)0x53)
-#define TCNT0 *((volatile uint8_t*)0x52)
-#define TIFR  *((volatile uint8_t*)0x58)
-#define TIMSK *((volatile uint8_t*)0x59)
-
-//Timer 1 registers (16-bit register)
-#define TCCR1A *((volatile uint8_t*)0x4F)
-#define TCCR1B *((volatile uint8_t*)0x4E)
-
-//Timer 2 registers (8-bit register)
-#define TCCR2 *((volatile uint8_t*)0x45)
-#define TCNT2 *((volatile uint8_t*)0x44)
+// #define TCCR0 *((volatile uint8_t*)0x53)
+// #define TCNT0 *((volatile uint8_t*)0x52)
+// #define TIFR  *((volatile uint8_t*)0x58)
+// #define TIMSK *((volatile uint8_t*)0x59)
+// 
+// //Timer 1 registers (16-bit register)
+// #define TCCR1A *((volatile uint8_t*)0x4F)
+// #define TCCR1B *((volatile uint8_t*)0x4E)
+// 
+// //Timer 2 registers (8-bit register)
+// #define TCCR2 *((volatile uint8_t*)0x45)
+// #define TCNT2 *((volatile uint8_t*)0x44)
 
 
 

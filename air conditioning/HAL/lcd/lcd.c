@@ -21,11 +21,11 @@ LCD_init_error LCD_8_bit_init(void)
     set_bit(LCD_Command_Dir,RS);
     set_bit(LCD_Command_Dir,RW);
     set_bit(LCD_Command_Dir,EN);
-
+    
     Set_mask(0xFF, LCD_Data_Dir);              /*LCD_Data_Port takes a whole port since 8 bit mode.*/
     TMR0_delayms(20);                          /*LCD power on delay is always >15 milliseconds*/
     LCD_8_bit_sendCommand(LCD_8_Bit_Mode);     /*Initialization of 16x2 LCD in 8 bit mode*/
-    LCD_8_bit_sendCommand(Cursor_Off);      /*Display ON cursor OFF*/
+    LCD_8_bit_sendCommand(Cursor_Off);         /*Display ON cursor OFF*/
     //LCD_8_bit_sendCommand(Cursor_Blinking);    /*Display ON cursor Blinking*/
     LCD_8_bit_sendCommand(Cursor_Shift_Right); /*Auto increment cursor*/
     LCD_8_bit_sendCommand(Clear_Screen);       /*Clear display*/
@@ -51,9 +51,9 @@ LCD_sendCommand_error LCD_8_bit_sendCommand(uint8_t u8_a_command)
 
     /*Generate a high to low pulse to the enable pin for a minimum of 450 nanoseconds*/
     set_bit(LCD_Command_Port,EN);
-    TMR0_delayms(0.001);
+    TMR0_delaymicros(1);
     clear_bit(LCD_Command_Port,EN);
-    TMR0_delayms(0.003);
+    TMR0_delaymicros(3);
 
     return cmnd_send_OK;
 }
@@ -71,9 +71,10 @@ LCD_sendChar_error LCD_8_bit_sendChar(uint8_t u8_a_char)
 
     /*Generate a high to low pulse to the enable pin for a minimum of 450 nanoseconds*/
     set_bit(LCD_Command_Port,EN);
-    TMR0_delayms(0.001);
+    TMR0_delaymicros(1);
     clear_bit(LCD_Command_Port,EN);
-    TMR0_delayms(0.003);
+    TMR0_delaymicros(3);
+    
     return char_send_OK;
 }
 
@@ -99,8 +100,8 @@ LCD_init_error LCD_4_bit_init(void)
     TMR0_delayms(20);                          /*LCD power on delay is always >15 milliseconds*/
     LCD_4_bit_sendCommand(LCD_4_Bit_Mode);     /*Initialization of 16x2 LCD in 8 bit mode*/
     LCD_4_bit_sendCommand(LCD_4_Bit_Mode_5x7); /*2 line 5x7 matrix in 4 bit mode*/
-    // LCD_4_bit_sendCommand(Cursor_Off);      /*Display ON cursor OFF*/
-    LCD_4_bit_sendCommand(Cursor_Blinking);    /*Display ON cursor Blinking*/
+    LCD_4_bit_sendCommand(Cursor_Off);         /*Display ON cursor OFF*/
+    //LCD_4_bit_sendCommand(Cursor_Blinking);  /*Display ON cursor Blinking*/
     LCD_4_bit_sendCommand(Cursor_Shift_Right); /*Auto increment cursor*/
     LCD_4_bit_sendCommand(Clear_Screen);       /*Clear display*/
     LCD_4_bit_sendCommand(Cursor_Reset_Line1); /*Cursor at home position*/
@@ -130,9 +131,9 @@ LCD_sendCommand_error LCD_4_bit_sendCommand(uint8_t u8_a_command)
 
     /*Generate a high to low pulse to the enable pin for a minimum of 450 nanoseconds*/
     set_bit(LCD_Command_Port,EN);
-    TMR0_delayms(0.001);
+    TMR0_delaymicros(1);
     clear_bit(LCD_Command_Port,EN);
-    TMR0_delayms(0.2);
+    TMR0_delaymicros(2);
 
     #if LCD_Data_Port_Nibble == 'U'
         LCD_Data_Port = (LCD_Data_Port & 0x0F) | ((u8_a_command & 0x0F) << 4); /*Add command value to data port, sending lower nibble*/
@@ -142,7 +143,7 @@ LCD_sendCommand_error LCD_4_bit_sendCommand(uint8_t u8_a_command)
 
     /*Generate a high to low pulse to the enable pin for a minimum of 450 nanoseconds*/
     set_bit(LCD_Command_Port,EN);
-    TMR0_delayms(0.001);
+    TMR0_delaymicros(1);
     clear_bit(LCD_Command_Port,EN);
     TMR0_delayms(2);
 
@@ -167,9 +168,9 @@ LCD_sendChar_error LCD_4_bit_sendChar(uint8_t u8_a_char)
 
     /*Generate a high to low pulse to the enable pin for a minimum of 450 nanoseconds*/
     set_bit(LCD_Command_Port,EN);
-    TMR0_delayms(0.001);
+    TMR0_delaymicros(1);
     clear_bit(LCD_Command_Port,EN);
-    TMR0_delayms(0.2);
+    TMR0_delaymicros(200);
     #if LCD_Data_Port_Nibble == 'U'
         LCD_Data_Port = (LCD_Data_Port & 0x0F) | ((u8_a_char & 0x0F) << 4);/*Add data value to data port, sending lower nibble*/
     #elif LCD_Data_Port_Nibble == 'L'
@@ -178,9 +179,9 @@ LCD_sendChar_error LCD_4_bit_sendChar(uint8_t u8_a_char)
 
     /*Generate a high to low pulse to the enable pin for a minimum of 450 nanoseconds*/
     set_bit(LCD_Command_Port,EN);
-    TMR0_delayms(0.001);
+    TMR0_delaymicros(1);
     clear_bit(LCD_Command_Port,EN);
-    TMR0_delayms(2);
+    TMR0_delaymicros(200);
 
     return char_send_OK;
 }
@@ -205,4 +206,96 @@ LCD_sendString_error LCD_sendString(uint8_t *u8_a_string)
         #endif
     }
     return string_send_OK;
+}
+
+/***************************************************************************/
+/** @brief    Go to a specific slot                                        */
+/** @param    u8_a_row row number                                          */
+/** @param    u8_a_coloumn column number                                   */
+/** @return   void                                                         */
+/***************************************************************************/
+void LCD_goTo(uint8_t u8_a_row,uint8_t u8_a_column)
+{
+    uint8_t u8_l_rows[]={Cursor_Reset_Line1,Cursor_Reset_Line2};
+    #if LCD_Bit_Mode == 8
+    LCD_8_bit_sendCommand(u8_l_rows[u8_a_row]+u8_a_column);
+
+    #elif LCD_Bit_Mode == 4
+    LCD_4_bit_sendCommand(u8_l_rows[u8_a_row]+u8_a_column);
+    #endif	
+}
+
+/***************************************************************************/
+/** @brief    Creates a custom character                                   */
+/** @param    *u8_a_bitMap Character's bitmap                              */
+/** @param    u8_a_location Characters' location in the memory             */
+/** @return   void                                                         */
+/***************************************************************************/
+void LCD_createCustomCharacter(uint8_t *u8_a_bitMap,uint8_t u8_a_location)
+{
+    uint8_t u8_l_count=0;
+
+    #if LCD_Bit_Mode == 8
+    LCD_8_bit_sendCommand( CGRAM + (u8_a_location*8) );
+
+    for(u8_l_count=0 ; u8_l_count < 8 ;u8_l_count++)
+    {
+        LCD_8_bit_sendChar(u8_a_bitMap[u8_l_count]);
+    }
+    #elif LCD_Bit_Mode == 4
+    LCD_4_bit_sendCommand(CGRAM+(u8_a_location*8));
+
+    for(u8_l_count=0;u8_l_count < 8;u8_l_count++)
+    {
+        LCD_4_bit_sendChar(u8_a_bitMap[u8_l_count]);
+    }
+    #endif	
+}
+
+/***************************************************************************/
+/** @brief  LCD initialization function                                    */
+/** @param  void                                                           */
+/** @return init_OK                                                        */
+/***************************************************************************/
+LCD_init_error LCD_init(void)
+{
+    #if LCD_Bit_Mode == 4
+    LCD_4_bit_init();
+    #elif LCD_Bit_Mode == 8
+    LCD_8_bit_init();
+    #endif
+    
+    return init_OK;
+}
+
+/***************************************************************************/
+/** @brief    Sends Commands LCD                                           */
+/** @param    u8_a_command   command to be sent to the LCD                 */
+/** @return   cmnd_send_OK                                                 */
+/***************************************************************************/
+LCD_sendCommand_error LCD_sendCommand(uint8_t u8_a_command)
+{
+    #if LCD_Bit_Mode == 4
+    LCD_4_bit_sendCommand(u8_a_command);
+    #elif LCD_Bit_Mode == 8
+    LCD_8_bit_sendCommand(u8_a_command);
+    #endif
+    
+    return cmnd_send_OK;
+}
+
+/***************************************************************************/
+/** @brief    Sends Characters LCD                                         */
+/** @param    u8_a_char                                                    */
+/** @return   char_send_OK                                                 */
+/***************************************************************************/
+LCD_sendChar_error LCD_sendChar(uint8_t u8_a_char)
+{
+    #if LCD_Bit_Mode == 4
+    LCD_4_bit_sendChar(u8_a_char);
+    #elif LCD_Bit_Mode == 8
+    LCD_8_bit_sendChar(u8_a_char);
+    #endif
+    
+    return char_send_OK;
 }

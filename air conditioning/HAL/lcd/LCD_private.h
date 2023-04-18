@@ -17,6 +17,7 @@
 #include "lcd_config.h"
 
 /*Macros for quick LCD Configurations*/
+#define CGRAM              0x40
 #define Cursor_Off         0x0C
 #define Clear_Screen       0x01
 #define LCD_4_Bit_Mode     0x02
