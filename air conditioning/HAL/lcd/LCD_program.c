@@ -14,16 +14,15 @@
 #include "../../MCAL/dio/DIO_interface.h"
 #include "../../MCAL/dio/DIO_private.h"
 
-#include "../../MCAL/tmer1/timer1_interface.h"
-#include "../../MCAL/tmer1/timer1_config.h"
+#include "../../MCAL/timer0/TMR0_interface.h"
+#include "../../MCAL/timer0/TMR0_config.h"
 
+# define F_CPU 1600000UL
 
 /** INCLUDE DRIVER FILES **/
 #include "LCD_interface.h"
 #include "LCD_private.h"
 #include "LCD_config.h"
-
-#include <avr/delay.h>
 
 /**********************************************************/
 /** FUNCTION TO INITIALIZE LCD                            */
@@ -34,7 +33,7 @@ LCD_status LCD_init(void)
 {
 	LCD_status en_a_lcdinitstatus = VALID__LCD_INIT ; /** VARIABLE TO OLD THE RETURN STATUS OF THE FUNCTION **/
 	
-	TMR1_init();
+	TMR0_init();
 	
 		#if LCD_MODE  == BIT_MODE_8    /** IF LCD CONFIGURED AS 8 BIT MODE **/
 		
@@ -44,7 +43,7 @@ LCD_status LCD_init(void)
 		
 		DIO_setportdir(LCD_8BIT_DATA_PORT , DIO_PORT_OUTPUT); /** SET THE DIRECTION OF LCD PORT AS OUTPUT **/
 		
-		_delay_ms(100);  /** DELAY FOR LCD TO BE INITIALIZED **/
+		TMR0_delayms(100);  /** DELAY FOR LCD TO BE INITIALIZED **/
 		
 		/** SEND SOME COMMANDS TO THE LCD FOR INITIAL SET   **/
 		
@@ -66,7 +65,7 @@ LCD_status LCD_init(void)
 		DIO_setpindir(LCD_4BIT_DATA_PORT , LCD_D6_PIN , DIO_PIN_OUTPUT);
 		DIO_setpindir(LCD_4BIT_DATA_PORT , LCD_D7_PIN , DIO_PIN_OUTPUT);
 		
-		_delay_ms(100); /** DELAY FOR LCD TO BE INITIALIZED **/
+		TMR0_delayms(100); /** DELAY FOR LCD TO BE INITIALIZED **/
 		
 		/** SEND SOME COMMANDS TO THE LCD FOR INITIAL SET   **/
 		
@@ -91,7 +90,7 @@ LCD_status LCD_init(void)
 /**********************************************************/
 LCD_status LCD_sendcmd(uint8_t u8_a_cmd)
 {
-	TMR1_init();
+	TMR0_init();
 	
 		#if LCD_MODE  == BIT_MODE_8    /** IF LCD CONFIGURED AS 8 BIT MODE **/
 		
@@ -102,10 +101,10 @@ LCD_status LCD_sendcmd(uint8_t u8_a_cmd)
 		DIO_setportvalue(PORTA , u8_a_cmd);  /** SEND THE COMMAND **/
 		
 		DIO_setpinvalue(LCD_8BIT_CMD_PORT , LCD_E_PIN , DIO_PIN_HIGH);  /** LATCH **/
-		_delay_ms(1); /** HIGH **/
+		TMR0_delayms(1); /** HIGH **/
 		
 		DIO_setpinvalue(LCD_8BIT_CMD_PORT , LCD_E_PIN , DIO_PIN_LOW);  /** LATCH **/
-		_delay_ms(5); /** LOW **/
+		TMR0_delayms(5); /** LOW **/
 		
 		#elif LCD_MODE == BIT_MODE_4    /** IF LCD CONFIGURED AS 4 BIT MODE **/
 		
@@ -116,18 +115,18 @@ LCD_status LCD_sendcmd(uint8_t u8_a_cmd)
 		PORTA = ((u8_a_cmd & 0xF0) | (PORTA & 0x0F)); /** SEND THE MSB(HIGH NIBBLE) **/
 		
 		DIO_setpinvalue(LCD_4BIT_CMD_PORT , LCD_E_PIN , DIO_PIN_HIGH); /** LATCH **/
-		_delay_ms(1);
+		TMR0_delayms(1);
 		DIO_setpinvalue(LCD_4BIT_CMD_PORT , LCD_E_PIN , DIO_PIN_LOW);  /** LATCH **/
 		
 		
 		PORTA = (((u8_a_cmd << 4) & 0xF0) | (PORTA & 0x0F)); /** SEND THE LSB(LOW NIBBLE) **/
 		
 		DIO_setpinvalue(LCD_4BIT_CMD_PORT , LCD_E_PIN , DIO_PIN_HIGH); /** LATCH **/
-		_delay_ms(1);
+		TMR0_delayms(1);
 		
 		DIO_setpinvalue(LCD_4BIT_CMD_PORT , LCD_E_PIN , DIO_PIN_LOW);    /** LATCH **/
 		
-		_delay_ms(5); /** 5 ms BEFORE SENDING THE NEXT COMMAND **/
+		TMR0_delayms(5); /** 5 ms BEFORE SENDING THE NEXT COMMAND **/
 		
 		#endif
 }
@@ -140,7 +139,6 @@ LCD_status LCD_sendcmd(uint8_t u8_a_cmd)
 /**********************************************************/
 LCD_status LCD_writechar(uint8_t u8_a_chr)
 {
-	TMR1_init();
 	
 	#if LCD_MODE  == BIT_MODE_8    /** IF LCD CONFIGURED AS 8 BIT MODE **/
 	
@@ -151,11 +149,11 @@ LCD_status LCD_writechar(uint8_t u8_a_chr)
 	PORTA = u8_a_chr;  /** SEND THE CHARACTER **/
 	
 	DIO_setpinvalue(LCD_8BIT_CMD_PORT , LCD_E_PIN , DIO_PIN_HIGH); /** LATCH **/
-	_delay_ms(1);
+	TMR0_delayms(1);
 	
 	DIO_setpinvalue(LCD_8BIT_CMD_PORT , LCD_E_PIN , DIO_PIN_LOW);  /** LATCH **/
 	
-	_delay_ms(5); /** 5 ms BEFORE SENDING THE NEXT CHARACTER **/
+	TMR0_delayms(5); /** 5 ms BEFORE SENDING THE NEXT CHARACTER **/
 	
 	#elif LCD_MODE == BIT_MODE_4    /** IF LCD CONFIGURED AS 4 BIT MODE **/
 	
@@ -167,16 +165,16 @@ LCD_status LCD_writechar(uint8_t u8_a_chr)
 	PORTA = ((u8_a_chr & 0xF0) | (PORTA & 0x0F)); /** SEND THE MSB (HIGH NIBBLE) **/
 	
 	DIO_setpinvalue(LCD_4BIT_CMD_PORT , LCD_E_PIN , DIO_PIN_HIGH); /** LATCH **/
-	_delay_ms(1);
+	TMR0_delayms(1);
 	DIO_setpinvalue(LCD_4BIT_CMD_PORT , LCD_E_PIN , DIO_PIN_LOW); /** LATCH **/
 		
 	PORTA = (((u8_a_chr << 4) & 0xF0) | (PORTA & 0x0F)); /** SEND THE LSB (LOW NIBBLE) **/
 	
 	DIO_setpinvalue(LCD_4BIT_CMD_PORT , LCD_E_PIN , DIO_PIN_HIGH); /** LATCH **/
-	_delay_ms(1);
+	TMR0_delayms(1);
 	DIO_setpinvalue(LCD_4BIT_CMD_PORT , LCD_E_PIN , DIO_PIN_LOW);  /** LATCH **/
 	
-	_delay_ms(5); /** 5 ms BEFORE SENDING THE NEXT CHARACTER **/
+	TMR0_delayms(5); /** 5 ms BEFORE SENDING THE NEXT CHARACTER **/
 	
 	#endif
 }

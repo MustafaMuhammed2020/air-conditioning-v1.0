@@ -8,6 +8,8 @@
 #ifndef LCD_INTERFACE_H_
 #define LCD_INTERFACE_H_
 
+#define F_CPU 16000000
+
 /** MACROS TO DEFINE THE POPERATING MODE OF LCD **/
 #define BIT_MODE_4     0
 #define BIT_MODE_8     1

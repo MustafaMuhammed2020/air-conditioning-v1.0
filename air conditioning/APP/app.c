@@ -13,20 +13,18 @@
 #include "../HAL/lcd/LCD_interface.h"
 #include "../HAL/lcd/LCD_config.h"
 
-#include "../MCAL/tmer1/timer1_interface.h"
-#include "../MCAL/tmer1/timer1_config.h"
+#include "../MCAL/timer0/TMR0_interface.h"
+#include "../MCAL/timer0/TMR0_config.h"
+
 
 void APP_init()
 {
-	TMR1_init();
+	TMR0_init();
 	
 	LCD_init();
 	
-	LCD_sendcmd(LCD_CLEAR);
-	
-	LCD_goto(1 , 1);
-	
-	LCD_writestr("Allah Akbar");
+		TMR0_delayms(20);
+		
 	
 }
 
@@ -34,6 +32,22 @@ void APP_init()
 void APP_start()
 {
 	
+	LCD_goto(0 , 0);
 	
+	LCD_writestr("MUSTAFA MOHAMMED");
+	
+	LCD_goto(1 , 1);
+		
+	LCD_writestr("HAWARY Sloiman");
+	
+ 	TMR0_delayms(2000);
+ 	
+ 	LCD_sendcmd(LCD_CLEAR);
+	 
+	 TMR0_delayms(20);
+	
+ 	LCD_writestr("Welcome !");
+		
+ 	TMR0_delayms(2000);	
 	
 }

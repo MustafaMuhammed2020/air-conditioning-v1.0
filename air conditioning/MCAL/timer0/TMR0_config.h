@@ -31,7 +31,7 @@
 /**                       5 - TMR_PHASE_CORRECT_INVERTED_MODE     **/
 /**                       6 - TMR0_CTC_MODE                       **/
 /*******************************************************************/
-#define TIMER0_MODE              TMR0_NORMAL_MODE
+#define TIMER0_MODE             TMR0_NORMAL_MODE
 
 
 /*******************************************************************/
@@ -42,7 +42,7 @@
 /**                       4 - PRESCALER_256                       **/
 /**                       5 - PRESCALER_1024                      **/
 /*******************************************************************/
-#define TIMER0_PRESCALER_VAL  NO_PRESCALER   
+#define TIMER0_PRESCALER_VAL  PRESCALER_1024   
 
 
 
