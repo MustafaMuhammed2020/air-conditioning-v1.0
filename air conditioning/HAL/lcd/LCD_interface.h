@@ -81,4 +81,13 @@ LCD_status LCD_clear(void);
 LCD_status LCD_writeint(sint32_t s32_a_num);
 
 
+/**********************************************************/
+/** FUNCTION TO WRITE CUSOMIZED CHARACTER ON THE LCD      */
+/** ARGUMENTS   : PATTERN , OCATION IN CGRAM              */
+/** RETURNS     : ERROR STATUS                            */
+/**********************************************************/
+LCD_status LCD_writecustomchar(uint8_t * u8_a_pattern , uint8_t u8_a_location);
+
+
+
 #endif /* ADC_INTERFACE_H_ */

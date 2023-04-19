@@ -210,3 +210,20 @@ LCD_status  LCD_goto(uint8_t u8_a_row , uint8_t u8_a_column)
 	
 	LCD_sendcmd(positions[u8_a_row] + u8_a_column); /** GO TO SPECIFIC MATRIX **/
 }
+
+/**********************************************************/
+/** FUNCTION TO WRITE CUSOMIZED CHARACTER ON THE LCD      */
+/** ARGUMENTS   : PATTERN , OCATION IN CGRAM              */
+/** RETURNS     : ERROR STATUS                            */
+/**********************************************************/
+LCD_status LCD_writecustomchar(uint8_t * u8_a_pattern , uint8_t u8_a_location)
+{
+	uint8_t u8_a_patterncounter = 0 ; /** ITERATOR ON THE ROWS OF CHARACTER PATTERN **/
+	
+	LCD_sendcmd( 0x40 + (u8_a_location * 8) ); /** SEND COMMAND TO LCD TO WRITE TO ITS RAM **/
+	
+	for(u8_a_patterncounter = 0 ; u8_a_patterncounter < 8 ; u8_a_patterncounter++)
+	{
+		LCD_writechar(u8_a_pattern[u8_a_patterncounter]); /** STORE 8 BYTES (PATTERN) **/
+	}
+}
