@@ -43,7 +43,7 @@ LCD_status LCD_init(void)
 		
 		DIO_setportdir(LCD_8BIT_DATA_PORT , DIO_PORT_OUTPUT); /** SET THE DIRECTION OF LCD PORT AS OUTPUT **/
 		
-		TMR0_delayms(100);  /** DELAY FOR LCD TO BE INITIALIZED **/
+		TMR0_delayms(20);  /** DELAY FOR LCD TO BE INITIALIZED **/
 		
 		/** SEND SOME COMMANDS TO THE LCD FOR INITIAL SET   **/
 		
@@ -65,7 +65,7 @@ LCD_status LCD_init(void)
 		DIO_setpindir(LCD_4BIT_DATA_PORT , LCD_D6_PIN , DIO_PIN_OUTPUT);
 		DIO_setpindir(LCD_4BIT_DATA_PORT , LCD_D7_PIN , DIO_PIN_OUTPUT);
 		
-		TMR0_delayms(100); /** DELAY FOR LCD TO BE INITIALIZED **/
+		TMR0_delayms(20); /** DELAY FOR LCD TO BE INITIALIZED **/
 		
 		/** SEND SOME COMMANDS TO THE LCD FOR INITIAL SET   **/
 		
@@ -225,5 +225,55 @@ LCD_status LCD_writecustomchar(uint8_t * u8_a_pattern , uint8_t u8_a_location)
 	for(u8_a_patterncounter = 0 ; u8_a_patterncounter < 8 ; u8_a_patterncounter++)
 	{
 		LCD_writechar(u8_a_pattern[u8_a_patterncounter]); /** STORE 8 BYTES (PATTERN) **/
+	}
+}
+
+/**********************************************************/
+/** FUNCTION TO WRITE INT ON THE LCD                      */
+/** ARGUMENTS   : ROW , COLUMN (POSITION)                 */
+/** RETURNS     : ERROR STATUS                            */
+/**********************************************************/
+LCD_status LCD_writeint(sint32_t s32_a_num)
+{
+	uint8_t i = 0, k ;
+	uint8_t number[10];
+	
+	/* In case of negative numbers */
+	if(s32_a_num < 0)
+	{
+		s32_a_num *= -1;
+		while(s32_a_num > 0)
+		{
+			number[i] = (s32_a_num % 10) + 48;  //Equivalent ASCII of number
+			s32_a_num /= 10;
+			i++;
+		}
+		number[i] = '-'; // storing the negative sign
+		
+		for(k = i+1 ; k > 0 ; k--)
+		{
+			LCD_writechar(number[k - 1]); //Display each number
+		}
+	}
+	/* Zero case */
+	else if(s32_a_num == 0)
+	{
+		LCD_writechar('0');
+	}
+	
+	/* In case of positive numbers */
+	else if(s32_a_num > 0)
+	{
+		while(s32_a_num > 0)
+		{
+			number[i] = (s32_a_num % 10) + 48; //Equivalent ASCII of number
+			s32_a_num /= 10;
+			i++;
+		}
+		
+		for(k = i ; k > 0 ; k--)
+		{
+			LCD_writechar(number[k-1]); //Display each number
+		}
 	}
 }
