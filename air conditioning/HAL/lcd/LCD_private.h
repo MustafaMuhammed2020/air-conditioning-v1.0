@@ -6,14 +6,9 @@
  * Copyright (c) 2023 Omar Taha <<https://github.com/OmarAshrafTaha>>
  */
 
-#ifndef _LCD_PRIVATE_H_
-#define _LCD_PRIVATE_H_
+#ifndef LCD_PRIVATE_H
+#define LCD_PRIVATE_H
 
-
-
-#include "../../SERVICE/standard_types.h"
-#include "../../SERVICE/common_macros.h"
-#include "../../SERVICE/registers.h"
 #include "lcd_config.h"
 
 /*Macros for quick LCD Configurations*/
@@ -28,6 +23,7 @@
 #define Cursor_Reset_Line2 0xC0
 #define Cursor_Shift_Right 0x06
 #define LCD_4_Bit_Mode_5x7 0x28
+
 
 
 
@@ -108,5 +104,5 @@ typedef enum LCD_sendChar_error
 	#undef  LCD_Data_Port
 	#define LCD_Data_Port PORTD
 	#define LCD_Data_Dir DDRD
-#endif
+#endif /* LCD_PRIVATE_H */
 #endif /*_LCD_PRIVATE_H_ */
