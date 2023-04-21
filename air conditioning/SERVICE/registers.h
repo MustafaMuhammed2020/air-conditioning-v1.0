@@ -61,6 +61,11 @@
 #define TCCR2 *((volatile uint8_t*)0x45)
 #define TCNT2 *((volatile uint8_t*)0x44)
 
+//ADC registers (8-bit register)
+#define ADMUX *((volatile uint8_t*)0x27)
+#define ADCSRA *((volatile uint8_t*)0x26)
+#define ADCH *((volatile uint8_t*)0x25)
+#define ADCL *((volatile uint8_t*)0x24)
 
 
 

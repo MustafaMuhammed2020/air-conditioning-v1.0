@@ -8,7 +8,7 @@
 #ifndef ADC_PRIVATE_H_
 #define ADC_PRIVATE_H_
 
-
+#define ADC_Ch_0 0
 
 
 

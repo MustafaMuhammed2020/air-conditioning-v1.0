@@ -8,6 +8,7 @@
 #ifndef TMR0_INTERFACE_H
 #define TMR0_INTERFACE_H
 
+#include "../../SERVICE/standard_types.h"
 /** DIFFERENT MACROS FOR TMR0 CONFIGURATION **/
 
 #define F_CPU 1000000 /** DEFINE THE CLOCK SOURCE FREQUENCY **/

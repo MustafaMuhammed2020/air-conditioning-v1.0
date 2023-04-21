@@ -10,7 +10,18 @@
 #ifndef ADC_INTERFACE_H_
 #define ADC_INTERFACE_H_
 
+#include "../../SERVICE/standard_types.h"
+#include "../../SERVICE/registers.h"
+#include "../../SERVICE/common_macros.h"
 
+#include "ADC_config.h"
+#include "ADC_private.h"
+
+
+
+void ADC_init(void);
+
+void ADC_start(float *sensorValue);
 
 
 

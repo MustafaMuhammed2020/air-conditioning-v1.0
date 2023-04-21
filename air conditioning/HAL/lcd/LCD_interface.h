@@ -1,72 +1,42 @@
 /*
  * File: lcd_interface.h
  * Created Date: Monday, April 17th 2023, 1:21:36 am
- * Author: Omar Taha
+ * Author: Mohab Ahmed
  * -----
- * Copyright (c) 2023 Omar Taha <<https://github.com/OmarAshrafTaha>>
  */
 
 #ifndef _INTERFACE_H_
 #define _INTERFACE_H_
 
-#include "lcd_private.h"
+
+//#include <avr/delay.h>
+#include "LCD_private.h"
+#include "LCD_config.h"
+#include "../../MCAL/timer0/TMR0_interface.h"
+#include "../../SERVICE/standard_types.h"
+#include "../../SERVICE/common_macros.h"
+#include "../../SERVICE/registers.h"
+
+uint8_t Bell[8];
 
 
-/*                              8 bit mode                                 */
+uint8_t LCD_8_bit_init(void);
 
-/***************************************************************************/
-/** @brief  LCD 8 bit mode initialization function                         */
-/** @param  void                                                           */
-/** @return init_OK                                                        */
-/***************************************************************************/
-LCD_init_error LCD_8_bit_init(void);
+uint8_t LCD_8_bit_sendCommand(uint8_t u8_a_command);
 
-/***************************************************************************/
-/** @brief    Sends Commands to 8 bit mode LCD                             */
-/** @param    u8_a_command   command to be sent to the LCD                 */
-/** @return   cmnd_send_OK                                                 */
-/***************************************************************************/
-LCD_sendCommand_error LCD_8_bit_sendCommand(uint8_t u8_a_command);
+uint8_t LCD_8_bit_sendChar(uint8_t u8_a_char);
 
-/***************************************************************************/
-/** @brief    Sends Characters to 8 bit mode LCD                           */
-/** @param    u8_a_char                                                    */
-/** @return   char_send_OK                                                 */
-/***************************************************************************/
-LCD_sendChar_error LCD_8_bit_sendChar(uint8_t u8_a_char);
+uint8_t LCD_8_bit_sendstring(uint8_t *str);
 
+uint8_t LCD_4_bit_init(void);
 
+uint8_t LCD_4_bit_sendCommand(uint8_t u8_a_command);
 
-/*                              4 bit mode                                 */
+uint8_t LCD_4_bit_sendChar(uint8_t u8_a_char);
 
-/***************************************************************************/
-/** @brief  LCD 4 bit mode initialization function                         */
-/** @param  void                                                           */
-/** @return init_OK                                                        */
-/***************************************************************************/
-LCD_init_error LCD_4_bit_init(void);
+uint8_t LCD_4_bit_sendstring(uint8_t *str);
 
-/***************************************************************************/
-/** @brief    Sends Commands to 4 bit mode LCD                             */
-/** @param    u8_a_command   command to be sent to the LCD                 */
-/** @return   cmnd_send_OK                                                 */
-/***************************************************************************/
-LCD_sendCommand_error LCD_4_bit_sendCommand(uint8_t u8_a_command);
+uint8_t LCD_create_custome_characters(uint8_t *pattern, uint8_t location);
 
-/***************************************************************************/
-/** @brief    Sends Characters to 4 bit mode LCD                           */
-/** @param    u8_a_char                                                    */
-/** @return   char_send_OK                                                 */
-/***************************************************************************/
-LCD_sendChar_error LCD_4_bit_sendChar(uint8_t u8_a_char);
-
-/*                              Common                                     */
-
-/***************************************************************************/
-/** @brief    Sends string to LCD                                          */
-/** @param    *u8_a_string                                                 */
-/** @return   string_send_OK                                               */
-/***************************************************************************/
-LCD_sendString_error LCD_sendString(uint8_t *u8_a_string);
 
 #endif /*_INTERFACE_H_ */
