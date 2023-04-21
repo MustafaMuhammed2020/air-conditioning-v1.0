@@ -21,7 +21,7 @@ typedef enum {
 /** ARGUMENTS : VOID */
 /** RETURN : ERROR STATUS */
 /****************************************************************/
-KEYPAD_status KEYPAD_init(void) ;
+void KEYPAD_init(void) ;
 
 
 /****************************************************************/
