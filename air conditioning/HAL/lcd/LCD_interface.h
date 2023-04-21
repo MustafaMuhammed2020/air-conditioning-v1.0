@@ -10,8 +10,7 @@
 #define _INTERFACE_H_
 
 #include "lcd_private.h"
-#include "../../MCAL/timers/timers.h"
-#include "../../Utilities/bit_manipulation.h"
+
 
 /*                              8 bit mode                                 */
 

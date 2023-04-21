@@ -9,6 +9,9 @@
 #ifndef LCD_PRIVATE_H
 #define LCD_PRIVATE_H
 
+#include "../../SERVICE/standard_types.h"
+#include "../../SERVICE/common_macros.h"
+#include "../../SERVICE/registers.h"
 #include "lcd_config.h"
 
 /*Macros for quick LCD Configurations*/
