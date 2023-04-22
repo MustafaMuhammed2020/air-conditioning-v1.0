@@ -52,6 +52,7 @@ SUBDIRS :=  \
 ../HAL/lm35 \
 ../HAL/lcd \
 ../HAL/keypad \
+../HAL/buzzer \
 ../MCAL \
 ../HAL \
 ../APP \
@@ -65,6 +66,7 @@ SUBDIRS :=  \
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
 ../APP/app.c \
+../HAL/buzzer/buzzer_program.c \
 ../HAL/keypad/KEYPAD_program.c \
 ../HAL/lcd/LCD_program.c \
 ../HAL/lm35/LM35_program.c \
@@ -83,6 +85,7 @@ ASM_SRCS +=
 
 OBJS +=  \
 APP/app.o \
+HAL/buzzer/buzzer_program.o \
 HAL/keypad/KEYPAD_program.o \
 HAL/lcd/LCD_program.o \
 HAL/lm35/LM35_program.o \
@@ -94,6 +97,7 @@ MCAL/tmer1/timer1_program.o
 
 OBJS_AS_ARGS +=  \
 APP/app.o \
+HAL/buzzer/buzzer_program.o \
 HAL/keypad/KEYPAD_program.o \
 HAL/lcd/LCD_program.o \
 HAL/lm35/LM35_program.o \
@@ -105,6 +109,7 @@ MCAL/tmer1/timer1_program.o
 
 C_DEPS +=  \
 APP/app.d \
+HAL/buzzer/buzzer_program.d \
 HAL/keypad/KEYPAD_program.d \
 HAL/lcd/LCD_program.d \
 HAL/lm35/LM35_program.d \
@@ -116,6 +121,7 @@ MCAL/tmer1/timer1_program.d
 
 C_DEPS_AS_ARGS +=  \
 APP/app.d \
+HAL/buzzer/buzzer_program.d \
 HAL/keypad/KEYPAD_program.d \
 HAL/lcd/LCD_program.d \
 HAL/lm35/LM35_program.d \
@@ -140,6 +146,13 @@ LINKER_SCRIPT_DEP+=
 
 # AVR32/GNU C Compiler
 APP/app.o: ../APP/app.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+HAL/buzzer/buzzer_program.o: ../HAL/buzzer/buzzer_program.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

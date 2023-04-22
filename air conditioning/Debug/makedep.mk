@@ -4,6 +4,8 @@
 
 APP\app.c
 
+HAL\buzzer\buzzer_program.c
+
 HAL\keypad\KEYPAD_program.c
 
 HAL\lcd\LCD_program.c

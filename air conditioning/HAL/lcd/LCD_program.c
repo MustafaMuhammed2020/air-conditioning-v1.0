@@ -235,13 +235,15 @@ LCD_status LCD_writecustomchar(uint8_t * u8_a_pattern , uint8_t u8_a_location)
 /**********************************************************/
 LCD_status LCD_writeint(sint32_t s32_a_num)
 {
-	uint8_t i = 0, k ;
+	uint8_t i = 0 , k ;
+	
 	uint8_t number[10];
 	
 	/* In case of negative numbers */
 	if(s32_a_num < 0)
 	{
 		s32_a_num *= -1;
+		
 		while(s32_a_num > 0)
 		{
 			number[i] = (s32_a_num % 10) + 48;  //Equivalent ASCII of number

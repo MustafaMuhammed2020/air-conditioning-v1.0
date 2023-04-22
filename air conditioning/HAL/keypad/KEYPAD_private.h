@@ -1,15 +1,26 @@
-/******************************************************************/
-/* Author  : Mustafa Mohammed Abdou                               */
-/* Date    : 16 , April 2023                                      */
-/* Version : V01                                                  */
-/* Hint    : Configuration file of Timer 0                        */
-/******************************************************************/
+/*
+ * File: keypad_private.h
+ * Created Date: Tuesday, April 18th 2023, 11:14:37 pm
+ * Author: Omar Taha
+ * -----
+ * Copyright (c) 2023 Omar Taha <<https://github.com/OmarAshrafTaha>>
+ */
 
-#ifndef KEYPAD_PRIVATE_H_
-#define KEYPAD_PRIVATE_H_
-
-
-
+#ifndef KEYPAD_PRIVATE_H
+#define KEYPAD_PRIVATE_H
 
 
-#endif /* ADC_PRIVATE_H_ */
+/*Keypad initialization error*/
+typedef enum KEYPAD_initError
+{
+    KEYPAD_initSuccess,KEYPAD_initFail
+}KEYPAD_initError;
+
+/*Keypad read error*/
+typedef enum KEYPAD_readError
+{
+    KEYPAD_readSuccess,KEYPAD_readFail
+}KEYPAD_readError;
+
+
+ #endif /* KEYPAD_PRIVATE_H */
