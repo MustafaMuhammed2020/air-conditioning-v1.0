@@ -19,8 +19,8 @@ uint8_t Button_Arr[3][3]=
     //COLUMN 2
     {BUTTON2, BUTTON5, BUTTON8},
     //COLUMN 3
-    {BUTTON3, BUTTON6, BUTTON9},
-}
+    {BUTTON3, BUTTON6, BUTTON9}
+};
 
 
 

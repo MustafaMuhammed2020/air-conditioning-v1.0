@@ -7,7 +7,7 @@
 
 #ifndef DIO_INTERFACE_H
 #define DIO_INTERFACE_H
-
+#include "../../SERVICE/standard_types.h"
 /*****************************************************************/
 /* INTERFACE FILE CONTAINS ALL PROTOTYPES AND CONFIGURATIONS     */
 /* RELATED TO SPECIFIC MODULE                                    */

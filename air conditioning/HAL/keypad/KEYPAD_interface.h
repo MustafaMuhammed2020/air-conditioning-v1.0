@@ -10,8 +10,12 @@
 #ifndef KEYPAD_INTERFACE_H_
 #define KEYPAD_INTERFACE_H_
 
+#include "../../SERVICE/standard_types.h"
+#include "KEYPAD_config.h"
+#include "KEYPAD_private.h"
 /** TYPEDEF TO RETURN THE STATUS OF FUNCTIONS **/
-typedef enum {
+
+typedef enum KEYPAD_status{
     VALID_KEYPAD_INIT,
     NOT_VALID_KEYPAD_INIT
 }KEYPAD_status;

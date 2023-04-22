@@ -11,7 +11,7 @@
 #include"KEYPAD_private.h"
 
 /** INCLUDE LIBRARIES **/
-#include "../../SERVICE/standard_types.h"
+#include "KEYPAD_interface.h"
 
 
 void KEYPAD_init(void){
@@ -25,7 +25,7 @@ DIO_setpindir(DIO_PORTA,ROW_1,DIO_PIN_INPUT);
 DIO_setpindir(DIO_PORTA,ROW_2,DIO_PIN_INPUT);
 DIO_setpindir(DIO_PORTA,ROW_3,DIO_PIN_INPUT);  
   
-Set Column Initial Values to 1 */
+/*Set Column Initial Values to 1 */
 DIO_setpinvalue(DIO_PORTA,COL_1,DIO_PIN_HIGH);
 DIO_setpinvalue(DIO_PORTA,COL_2,DIO_PIN_HIGH);
 DIO_setpinvalue(DIO_PORTA,COL_3,DIO_PIN_HIGH) ;
@@ -42,23 +42,23 @@ DIO_setpinvalue(DIO_PORTA,ROW_3,DIO_PIN_HIGH);
 
 uint8_t KEYPAD_getpressedkey(void){
   
-
-  for (counter_col = 0; counter_col < KEYPADSIZE; counter_col++)
+	uint8_t rowValue;
+  for (uint8_t counter_col = 0; counter_col < KEYPADSIZE; counter_col++)
     {
       //set pins in ColumnArray to HIGH
       DIO_setpinvalue(DIO_PORTA,Col_Arr[counter_col], DIO_PIN_HIGH);
      } 
   
     //Scan all keypad columns
-    for (counter_col = 0; counter_col < KEYPADSIZE; counter_col++)
+    for (uint8_t counter_col = 0; counter_col < KEYPADSIZE; counter_col++)
         {
             //activate current colmun
            DIO_setpinvalue(DIO_PORTA,Col_Arr[counter_col], DIO_PIN_LOW);
-            for (counter_row = 0; counter_row < KEYPADSIZE; counter_row++)
+            for (uint8_t counter_row = 0; counter_row < KEYPADSIZE; counter_row++)
             {
               //check row value if it is 0 then this column and row is connected
               DIO_readpin(DIO_PORTA, Row_Arr[counter_row],&rowValue);              
-              if (rowVal == 0)
+              if (rowValue == 0)
                 {
                     //Return pressed button value
                       return Button_Arr[counter_col][counter_row];

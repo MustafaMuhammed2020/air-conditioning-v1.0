@@ -5,8 +5,8 @@
 /* Hint    : common macros                        */
 /**************************************************/
 
-#ifndef COMMON_MACROS_H_INCLUDED
-#define COMMON_MACROS_H_INCLUDED
+#ifndef COMMON_MACROS_H
+#define COMMON_MACROS_H
 
 /*macro to set a specific bit*/
 #define set_bit(byte,bit_num) (byte |= (1<<bit_num))
@@ -41,7 +41,10 @@
 /*macro to display a specific flag*/
 #define get_bit(byte,flag_num) (byte = (byte >> flag_num) & 0X01)
 
+#define Set_Bit(pinNumber,portNumber)		((portNumber) |= (1<<pinNumber))
+#define Clear_Bit(pinNumber,portNumber)		((portNumber) &= ~(1<<pinNumber))
+#define Read_Bit(pinNumber,portNumber)		(((portNumber) & (1<<pinNumber))>>pinNumber)
+#define Toggle_Bit(pinNumber,portNumber)	((portNumber)^=(1<<pinNumber))
 
 
-
-#endif // COMMON_MACROS_H_INCLUDED
+#endif /* COMMON_MACROS_H */

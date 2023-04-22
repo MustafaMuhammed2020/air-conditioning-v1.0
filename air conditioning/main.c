@@ -28,7 +28,7 @@ int main(void)
 	//LCD_sendCommand(Clear_Screen);
 	
 	while(1)
-	{
+	{  
 		LCD_goTo(0,8);
 		LCD_sendChar(0);
 		TMR0_delayms(50);

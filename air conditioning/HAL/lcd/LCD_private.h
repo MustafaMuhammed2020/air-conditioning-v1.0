@@ -107,5 +107,7 @@ typedef enum LCD_sendChar_error
 	#undef  LCD_Data_Port
 	#define LCD_Data_Port PORTD
 	#define LCD_Data_Dir DDRD
+#endif
+
 #endif /* LCD_PRIVATE_H */
-#endif /*_LCD_PRIVATE_H_ */
+
