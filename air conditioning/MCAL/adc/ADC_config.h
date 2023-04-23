@@ -5,8 +5,8 @@
 /* Hint    : Configuration file ADC                               */
 /******************************************************************/
 
-#ifndef ADC_CONFIG_H_
-#define ADC_CONFIG_H_
+#ifndef ADC_CONFIG_H
+#define ADC_CONFIG_H
 
 /***************************************************************/
 /** CONFIGURE VOLTAGE REFERENCE                               **/
@@ -34,7 +34,7 @@
 /**                     7 - CHANNEL6                          **/
 /**                     8 - CHANNEL7                          **/
 /***************************************************************/
-#define   ADC_CHANNEL                  CHANNEL1
+#define   ADC_CHANNEL                  CHANNEL7
 
 /***************************************************************/
 /** CONFIGURE ADC PRESCALLER                                  **/
@@ -63,4 +63,4 @@
 
 
 
-#endif /* ADC_CONFIG_H_ */
+#endif /* ADC_CONFIG_H */

@@ -251,9 +251,9 @@
     <Folder Include="Debug\MCAL\dio\" />
     <Folder Include="Debug\MCAL\timer0\" />
     <Folder Include="Debug\SERVICE\" />
+    <Folder Include="HAL\keypad\" />
     <Folder Include="HAL\lcd\" />
     <Folder Include="HAL\lm35" />
-    <Folder Include="HAL\keypad" />
     <Folder Include="MCAL" />
     <Folder Include="HAL" />
     <Folder Include="APP" />

@@ -68,8 +68,8 @@ TMR0_init_error TMR0_init(void)
 	 en_a_initstatus = VALID_INIT ; /** INITIALIZATION STATUS IS TRUE **/
 	 
 	 /* ENABLE INTERRUPT */
-	 set_bit(SREG , 7);
-	 set_bit(TIMSK , 0);
+// 	 set_bit(SREG , 7);
+// 	 set_bit(TIMSK , 0);
 	 
 	 #elif TIMER0_MODE == TMR0_FASTPWM_NON_INVERTED_MODE
 	 

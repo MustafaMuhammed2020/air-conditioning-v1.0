@@ -23,7 +23,7 @@ LCD_init_error LCD_8_bit_init(void)
     set_bit(LCD_Command_Dir,EN);
     
     Set_mask(0xFF, LCD_Data_Dir);              /*LCD_Data_Port takes a whole port since 8 bit mode.*/
-    TMR0_delayms(20);                          /*LCD power on delay is always >15 milliseconds*/
+    TMR0_delaymicros(20000);                          /*LCD power on delay is always >15 milliseconds*/
     LCD_8_bit_sendCommand(LCD_8_Bit_Mode);     /*Initialization of 16x2 LCD in 8 bit mode*/
     LCD_8_bit_sendCommand(Cursor_Off);         /*Display ON cursor OFF*/
     //LCD_8_bit_sendCommand(Cursor_Blinking);    /*Display ON cursor Blinking*/
@@ -97,7 +97,7 @@ LCD_init_error LCD_4_bit_init(void)
         Set_mask(0x0F, LCD_Data_Dir); /*Lower nibble of the port as output.*/
     #endif
 
-    TMR0_delayms(20);                          /*LCD power on delay is always >15 milliseconds*/
+    TMR0_delaymicros(20000);                          /*LCD power on delay is always >15 milliseconds*/
     LCD_4_bit_sendCommand(LCD_4_Bit_Mode);     /*Initialization of 16x2 LCD in 8 bit mode*/
     LCD_4_bit_sendCommand(LCD_4_Bit_Mode_5x7); /*2 line 5x7 matrix in 4 bit mode*/
     LCD_4_bit_sendCommand(Cursor_Off);         /*Display ON cursor OFF*/
@@ -145,7 +145,7 @@ LCD_sendCommand_error LCD_4_bit_sendCommand(uint8_t u8_a_command)
     set_bit(LCD_Command_Port,EN);
     TMR0_delaymicros(1);
     clear_bit(LCD_Command_Port,EN);
-    TMR0_delayms(2);
+    TMR0_delaymicros(2000);
 
     return cmnd_send_OK;
 }
@@ -346,7 +346,7 @@ LCD_sendChar_error LCD_sendFloat(float f_a_number)
 
 	LCD_sendChar('.');
 	LCD_sendChar(decimalPart+48);
-	LCD_sendString("  ");
+	//LCD_sendString("  ");
 	
     return char_send_OK;
 }
@@ -376,6 +376,6 @@ LCD_sendChar_error LCD_sendInteger(uint16_t u16_a_number)
 	{
 		LCD_sendChar(u_l_toString[j-1]);
 	}
-	LCD_sendString("  ");
+	//LCD_sendString("  ");
 	return char_send_OK;
 }

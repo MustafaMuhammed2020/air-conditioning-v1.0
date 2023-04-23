@@ -16,6 +16,9 @@
 #include "ADC_private.h"
 #include "ADC_config.h"
 
+#define ADC_STEP (5.0/1024.0)
+#define SENSOR_RESOLUTION (float)0.294
+
 /***********************************************************/
 /** FUNCTION TO INITIALIZE ADC                             */
 /** AGUMENTS  : VOID                                       */
@@ -139,13 +142,18 @@ ADC_initstatus ADC_init(void)
 /***********************************************************/
 uint32_t ADC_read(void)
 {
-	uint32_t u16_a_analogvalue = 0;
+	float f_a_sensorValue;
+	uint16_t u16_l_digitalValue = 0;
+    float    u16_l_analogValue  = 0;
+    uint16_t u16_l_tempValue    = 0;
 		
 	set_bit(ADCSRA , 6); /** SATRT CONVERSION **/
 	
 	while( (ADCSRA & (1 << 4)) == 0); /** WAIT UNTILL CONVERSION ENDS **/
 	
-	u16_a_analogvalue = ADC_VAL ; /** GET THE VALUE FORM ADC VALUE REGISTER **/
+	u16_l_digitalValue = ADC_VAL;
+	u16_l_analogValue  = u16_l_digitalValue * ADC_STEP;
+	f_a_sensorValue = u16_l_analogValue / SENSOR_RESOLUTION; /** GET THE VALUE FORM ADC VALUE REGISTER **/
 	 
-	return u16_a_analogvalue; /** RETURN THE ANALOG VALUE **/ 
+	return f_a_sensorValue; /** RETURN THE ANALOG VALUE **/ 
 }

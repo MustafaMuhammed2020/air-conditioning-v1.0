@@ -23,14 +23,14 @@
 #define ROW_3  DIO_PIN5
 
 /******** Buttons Definition ********/
-#define BUTTON1    1
-#define BUTTON2    2
-#define BUTTON3    3
-#define BUTTON4    4
-#define BUTTON5    5
-#define BUTTON6    6
-#define BUTTON7    7
-#define BUTTON8    8
-#define BUTTON9    9
+#define BUTTON1    '1'
+#define BUTTON2    '2'
+#define BUTTON3    '3'
+#define BUTTON4    '4'
+#define BUTTON5    '5'
+#define BUTTON6    '6'
+#define BUTTON7    '7'
+#define BUTTON8    '8'
+#define BUTTON9    '9'
 
 #endif /* ADC_CONFIG_H_ */

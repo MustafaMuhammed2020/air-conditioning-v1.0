@@ -47,9 +47,9 @@ SUBDIRS :=  \
 ../Debug/MCAL/dio/ \
 ../Debug/MCAL/timer0/ \
 ../Debug/SERVICE/ \
+../HAL/keypad/ \
 ../HAL/lcd/ \
 ../HAL/lm35 \
-../HAL/keypad \
 ../MCAL \
 ../HAL \
 ../APP \
