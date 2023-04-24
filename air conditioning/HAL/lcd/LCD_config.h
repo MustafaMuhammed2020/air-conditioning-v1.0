@@ -18,7 +18,7 @@
 /*----------------------------------------------------------------------------------------------------------------------------------*/
 /*                                                            DATA port                                                             */
 /*----------------------------------------------------------------------------------------------------------------------------------*/
-#define LCD_Data_Port        'C' /*Choose Data Port.If 4 bit mode is chosen, choose which half of the chosen port will be used below*/
+#define LCD_Data_Port        'A' /*Choose Data Port.If 4 bit mode is chosen, choose which half of the chosen port will be used below*/
 #define LCD_Data_Port_Nibble 'U' /*Choose 'U' for Upper nibble of the port or 'L' for the Lower nibble of the port                  */
 /*----------------------------------------------------------------------------------------------------------------------------------*/
 

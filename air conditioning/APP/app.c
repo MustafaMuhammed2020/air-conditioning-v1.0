@@ -67,7 +67,7 @@ APP_initError APP_init(void)
 /***************************************************************************/
 void APP_printString(uint8_t u8_a_row, uint8_t u8_a_column, uint8_t *u8_a_str)
 {
-    LCD_goTo(u8_a_row, u8_a_column); /*Sets the cursos position to the passed row and column number*/
+    LCD_goTo(u8_a_row, u8_a_column); /*Sets the cursor position to the passed row and column number*/
     LCD_sendString(u8_a_str);        /*Sends the passed string to the LCD*/
 }
 
