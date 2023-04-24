@@ -27,24 +27,24 @@ uint8_t Button_Arr[3][3] =
 void KEYPAD_init(void)
 {
   /* Set Columns direction to Output */
-  DIO_setpindir(DIO_PORTD, COL_1, DIO_PIN_INPUT);
-  DIO_setpindir(DIO_PORTD, COL_2, DIO_PIN_INPUT);
-  DIO_setpindir(DIO_PORTD, COL_3, DIO_PIN_INPUT);
+  DIO_setpindir(DIO_PORTC, COL_1, DIO_PIN_INPUT);
+  DIO_setpindir(DIO_PORTC, COL_2, DIO_PIN_INPUT);
+  DIO_setpindir(DIO_PORTC, COL_3, DIO_PIN_INPUT);
 
   /* Set Rows direction to Input */
-  DIO_setpindir(DIO_PORTD, ROW_1, DIO_PIN_OUTPUT);
-  DIO_setpindir(DIO_PORTD, ROW_2, DIO_PIN_OUTPUT);
-  DIO_setpindir(DIO_PORTD, ROW_3, DIO_PIN_OUTPUT);
+  DIO_setpindir(DIO_PORTC, ROW_1, DIO_PIN_OUTPUT);
+  DIO_setpindir(DIO_PORTC, ROW_2, DIO_PIN_OUTPUT);
+  DIO_setpindir(DIO_PORTC, ROW_3, DIO_PIN_OUTPUT);
 
   /*Set Column Initial Values to 1 */
-  DIO_setpinvalue(DIO_PORTD, COL_1, DIO_PIN_HIGH);
-  DIO_setpinvalue(DIO_PORTD, COL_2, DIO_PIN_HIGH);
-  DIO_setpinvalue(DIO_PORTD, COL_3, DIO_PIN_HIGH);
+  DIO_setpinvalue(DIO_PORTC, COL_1, DIO_PIN_HIGH);
+  DIO_setpinvalue(DIO_PORTC, COL_2, DIO_PIN_HIGH);
+  DIO_setpinvalue(DIO_PORTC, COL_3, DIO_PIN_HIGH);
 
   /* Enable Pull Up Resistors at Input Rows */
-  DIO_setpinvalue(DIO_PORTD, ROW_1, DIO_PIN_HIGH);
-  DIO_setpinvalue(DIO_PORTD, ROW_2, DIO_PIN_HIGH);
-  DIO_setpinvalue(DIO_PORTD, ROW_3, DIO_PIN_HIGH);
+  DIO_setpinvalue(DIO_PORTC, ROW_1, DIO_PIN_HIGH);
+  DIO_setpinvalue(DIO_PORTC, ROW_2, DIO_PIN_HIGH);
+  DIO_setpinvalue(DIO_PORTC, ROW_3, DIO_PIN_HIGH);
 }
 
 uint8_t KEYPAD_getpressedkey(void)
@@ -56,21 +56,21 @@ uint8_t KEYPAD_getpressedkey(void)
   for (uint8_t counter_row = 0; counter_row < KEYPADSIZE; counter_row++)
   {
     // activate current colmun
-    DIO_setpinvalue(DIO_PORTD, Row_Arr[counter_row], DIO_PIN_LOW);
+    DIO_setpinvalue(DIO_PORTC, Row_Arr[counter_row], DIO_PIN_LOW);
 
     for (uint8_t counter_col = 0; counter_col < KEYPADSIZE; counter_col++)
     {
       // check row value if it is 0 then this column and row is connected
-      DIO_readpin(DIO_PORTD, Col_Arr[counter_col], &colValue);
+      DIO_readpin(DIO_PORTC, Col_Arr[counter_col], &colValue);
       if (colValue == 0)
       {
         // Return pressed button value
-        DIO_setpinvalue(DIO_PORTD, Row_Arr[counter_row], DIO_PIN_HIGH);
+        DIO_setpinvalue(DIO_PORTC, Row_Arr[counter_row], DIO_PIN_HIGH);
         return Button_Arr[counter_row][counter_col];
       }
     }
     // set current column pin HIGH again
-    DIO_setpinvalue(DIO_PORTD, Row_Arr[counter_row], DIO_PIN_HIGH);
+    DIO_setpinvalue(DIO_PORTC, Row_Arr[counter_row], DIO_PIN_HIGH);
   }
 
   // Report no Button pressed

@@ -34,7 +34,7 @@
 /**                     7 - CHANNEL6                          **/
 /**                     8 - CHANNEL7                          **/
 /***************************************************************/
-#define   ADC_CHANNEL                  CHANNEL7
+#define   ADC_CHANNEL                  CHANNEL0
 
 /***************************************************************/
 /** CONFIGURE ADC PRESCALLER                                  **/

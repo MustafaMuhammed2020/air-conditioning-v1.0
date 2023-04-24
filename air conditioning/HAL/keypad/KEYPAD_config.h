@@ -13,14 +13,14 @@
 #include "../../MCAL/dio/DIO_interface.h"
 #include "../../SERVICE/standard_types.h"
 /******** Columns Definition *********/
-#define COL_1  DIO_PIN0
-#define COL_2  DIO_PIN1
-#define COL_3  DIO_PIN2
+#define COL_1  DIO_PIN5
+#define COL_2  DIO_PIN6
+#define COL_3  DIO_PIN7
 
 /******** Rows Definition *********/
-#define ROW_1  DIO_PIN3
-#define ROW_2  DIO_PIN4
-#define ROW_3  DIO_PIN5
+#define ROW_1  DIO_PIN2
+#define ROW_2  DIO_PIN3
+#define ROW_3  DIO_PIN4
 
 /******** Buttons Definition ********/
 #define BUTTON1    '1'
