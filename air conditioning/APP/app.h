@@ -12,6 +12,7 @@
 #include "../HAL/keypad/KEYPAD_interface.h"
 #include "../MCAL/adc/ADC_interface.h"
 #include "../MCAL/timer2/timers.h"
+#include "../HAL/buzzer/buzzer_interface.h"
 
 typedef enum APP_initError
 {

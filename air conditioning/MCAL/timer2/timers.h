@@ -35,7 +35,7 @@
 /************************************************************************/
 
 #ifndef F_CPU
-#define F_CPU 1000000.0 //1Mhz
+#define F_CPU 16000000.0 //1Mhz
 #endif
 
 #define PRESCALER_MODE NO_PRESCALE_

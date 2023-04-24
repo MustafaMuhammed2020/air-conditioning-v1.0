@@ -35,6 +35,8 @@ APP_initError APP_init(void)
     LCD_init();
     KEYPAD_init();
     ADC_init();
+    BUZZ_init();
+    BUZZ_off();
 
     /*Timer 2 Initialization*/
 
@@ -229,10 +231,12 @@ void APP_defaultView(void)
     /*Show buzzer if the sensor's reading is higher than the user required temp*/
     if ((int)adc_value > u8_g_requiredTemp)
     {
+        BUZZ_on();
         APP_printChar(0, 15, 0); /*Show the bell custom character*/
     }
     else if ((int)adc_value <= u8_g_requiredTemp)
     {
+        BUZZ_off();
         APP_printChar(0, 15, ' '); /*Clear the bell*/
     }
 
@@ -243,6 +247,7 @@ void APP_defaultView(void)
         LCD_sendCommand(Clear_Screen);
         if (keypadValue == '4') /*checks if the user wants to readjust*/
         {
+            BUZZ_off();
             APP_printString(0, 0, " Readjust mode");
             u8_g_barCount = 0;
             TMR0_delaymicros(1000000);
@@ -251,6 +256,7 @@ void APP_defaultView(void)
 
         else if (keypadValue == '5') /*checks if the user wants to reset*/
         {
+            BUZZ_off();
             APP_printString(0, 0, "Temp reset to 20");
             u8_g_requiredTemp = 20;
             u8_g_barCount = 0;

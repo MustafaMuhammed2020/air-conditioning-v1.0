@@ -10,7 +10,7 @@
 
 /** DIFFERENT MACROS FOR TMR0 CONFIGURATION **/
 
-#define F_CPU 1000000.0 /** DEFINE THE CLOCK SOURCE FREQUENCY **/
+#define F_CPU 16000000.0 /** DEFINE THE CLOCK SOURCE FREQUENCY **/
 
 /** MACROS FOR THE CLOCK SOURCE  **/
 #define INTERNAL_CLK_SRC 0
@@ -104,4 +104,4 @@ TMR0_delay_error TMR0_delayms(uint32_t u32_a_delayms);
 /*******************************************************************************/
 TMR0_delay_error TMR0_delaymicros(uint32_t u32_a_delaymicros);
 
-#endif
+#endif /* TMR0_INTERFACE_H */

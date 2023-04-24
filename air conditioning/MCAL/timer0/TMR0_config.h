@@ -55,4 +55,4 @@
 #define COMPARE_ACTION         TOOGLE_ON_COMPARE
 
 
-#endif
+#endif /* TMR0_CONFIG_H */
