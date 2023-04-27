@@ -10,6 +10,12 @@ This is the implementation of the air conditioning system for team 2
 - Project Presentation :
 - Unit Test :
 
+#Project Documentations :
+- Air Conditioning Desing
+- Team Backlog
+- Unit Tests Protocol
+- Project Tests Protocol
+
 #Project Description :
 - 1	Hardware components
   *  LCD (2*16)
