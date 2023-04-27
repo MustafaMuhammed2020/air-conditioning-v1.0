@@ -1,7 +1,7 @@
 # Air_Conditioning_v1.0
 This is the implementation of the air conditioning system for team 2
 
-# Team Members
+# Team Members :
 - Mohab Ahmed
 - Anas Mahmoud
 - Mustafa Mohammed
@@ -17,6 +17,10 @@ This is the implementation of the air conditioning system for team 2
 - [Unit Test Protocol](https://github.com/MustafaMuhammed2020/air-conditioning-v1.0/blob/main/air%20conditioning/Unit%20Test%20Protocol%20(Air%20Conditioning).xlsx)
 - [Application Test Protocol](https://github.com/MustafaMuhammed2020/air-conditioning-v1.0/blob/main/air%20conditioning/Applicaion%20Test%20Protocol%20(Air%20Conditioning).xlsx)
 
+# Quick Links :
+- [Proteus](https://github.com/MustafaMuhammed2020/air-conditioning-v1.0/blob/main/air%20conditioning/Proteus/Air%20Conditioner.pdsprj)
+- [Project Hex File](https://github.com/MustafaMuhammed2020/air-conditioning-v1.0/blob/main/air%20conditioning/Debug/air%20conditioning.hex)
+
 # Project Description :
 - 1	Hardware components
   *  LCD (2*16)
@@ -24,7 +28,7 @@ This is the implementation of the air conditioning system for team 2
   *  Temperature sensor (LM35) 
   *  Buzzer
 
-- 2 Software requirements
+- 2 Software requirements :
   - The system starts initially by welcoming the user 
   - Then inform the user about the default temp and ask for desired one 
   - Display range of temperature starts from min 18 and to max 35 C
