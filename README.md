@@ -8,8 +8,8 @@ This is the implementation of the air conditioning system for team 2
 - Omar Taha
 
 # Video Links :
-- Project Presentation :
-- Unit Test : https://drive.google.com/file/d/1zrZ5Z_kxnzbcjzPOof1ZWJXtjrssvkJg/view?usp=share_link
+- Project Presentation
+- [Unit Tests](https://drive.google.com/file/d/1zrZ5Z_kxnzbcjzPOof1ZWJXtjrssvkJg/view?usp=share_link)
 
 # Project Documents :
 - [Air Conditioning Design](https://github.com/MustafaMuhammed2020/air-conditioning-v1.0/blob/main/air%20conditioning/Air%20Conditioning%20Design.pdf)
