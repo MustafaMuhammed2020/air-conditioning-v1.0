@@ -12,7 +12,7 @@ This is the implementation of the air conditioning system for team 2
 - Unit Test :
 
 # Project Documents :
-- Air Conditioning Desing
+- Air Conditioning Design
 - Team Backlog
 - Unit Tests Protocol
 - Project Tests Protocol
