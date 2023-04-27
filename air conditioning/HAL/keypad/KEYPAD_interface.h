@@ -13,12 +13,6 @@
 #include "../../SERVICE/standard_types.h"
 #include "KEYPAD_config.h"
 #include "KEYPAD_private.h"
-/** TYPEDEF TO RETURN THE STATUS OF FUNCTIONS **/
-
-typedef enum KEYPAD_status{
-    VALID_KEYPAD_INIT,
-    NOT_VALID_KEYPAD_INIT
-}KEYPAD_status;
 
 /****************************************************************/
 /** FUNCTION TO INITIALIZE KEY PAD */
