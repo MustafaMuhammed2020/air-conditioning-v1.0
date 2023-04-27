@@ -11,7 +11,7 @@ This is the implementation of the air conditioning system for team 2
 - Project Presentation :
 - Unit Test :
 
-# Project Documentations :
+# Project Documents :
 - Air Conditioning Desing
 - Team Backlog
 - Unit Tests Protocol
