@@ -1,22 +1,23 @@
 # Air_Conditioning_v1.0
 This is the implementation of the air conditioning system for team 2
-#Team Members
+
+# Team Members
 - Mohab Ahmed
 - Anas Mahmoud
 - Mustafa Mohammed
 - Omar Taha
 
-#Video Links :
+# Video Links :
 - Project Presentation :
 - Unit Test :
 
-#Project Documentations :
+# Project Documentations :
 - Air Conditioning Desing
 - Team Backlog
 - Unit Tests Protocol
 - Project Tests Protocol
 
-#Project Description :
+# Project Description :
 - 1	Hardware components
   *  LCD (2*16)
   *  Keypad (3 * 3) (Note: 4 buttons will be used) 
