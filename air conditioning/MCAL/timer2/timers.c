@@ -119,15 +119,13 @@ err_state TIMER2_delay(float f_a_delayInMillis)
 
     //get no of overflows needed to achieve the required delay
     u16_l_numberOfOVF = TIMER2_getInitialValue(f_a_delayInMillis);
-
+    TCNT2 = u16_gs_t2_initial_value;
+    TIMER2_perscalerMode(PRESCALER_MODE);
     //keep looping until achieving the number of overflows required
     while(u16_l_count<u16_l_numberOfOVF)
     {
         //busy loop until the timer interrupt flag is up
-        TCNT2 = u16_gs_t2_initial_value;
-        TIMER2_perscalerMode(PRESCALER_MODE);
         while( (TIFR & (1<<6) ) ==0 );
-        TCCR2 = 0;
         Set_Bit(6,TIFR);
         //clear flag
         u16_l_count++;
