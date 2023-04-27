@@ -8,7 +8,7 @@ This is the implementation of the air conditioning system for team 2
 - Omar Taha
 
 # Video Links :
-- Project Presentation
+- [Project Presentation](https://drive.google.com/file/d/17VJ6piqDJuWBTiNHRSKG_JCrMagGxfHJ/view?usp=share_link)
 - [Unit Tests](https://drive.google.com/file/d/1zrZ5Z_kxnzbcjzPOof1ZWJXtjrssvkJg/view?usp=share_link)
 
 # Project Documents :
